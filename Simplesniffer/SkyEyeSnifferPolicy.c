@@ -35,6 +35,7 @@ void define_mark()
     mark_count = 1;
 
 	policy_test();
+    printf("Test Information Add Finished");
 }
 
 /*
