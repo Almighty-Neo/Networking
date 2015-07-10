@@ -28,9 +28,9 @@ struct policy_list{
 	u_int  keywordslen[MAXKEYWORDS];
 	u_char keyword[256];			//origin keyword string, split keyword by mark '|'
 
-	u_int  mark_position[MARK_COUNT][MARK_ARRAY_COUNT];   //mark postion array
-	u_int  mark_array_count [MARK_COUNT];
-	u_char mark_array[MARK_COUNT][MARK_ARRAY_COUNT];      //mark array
+	u_int  mark_position[MARK_ARRAY_COUNT];   //mark postion array
+	u_int  mark_array_count;
+	u_char mark_array[MARK_ARRAY_COUNT];      //mark array
 
 	int keywords_count;
 	int marks_count;
@@ -70,5 +70,12 @@ int policy_del(struct policy_list * des);
 
 int policy_clear();
 
+int policy_check_fingerprint(const u_char *payload, int len, struct policy_list * plc);
+
+int policy_check_keywords(const u_char * strPackage, int length, struct policy_list * plc);
+
+int policy_transfer_fingerprint(const u_char * strKeyword, struct policy_list * plc);
+
+int policy_transfer_keyword(const u_char * strKeyword, int lenth, struct policy_list * plc);
 
 #endif

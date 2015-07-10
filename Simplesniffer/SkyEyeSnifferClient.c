@@ -1,4 +1,4 @@
- 
+
 #include "SkyEyePublicHeader.h"
 #include "SkyEyeSnifferClient.h"
 #include "SkyEyeSnifferPolicy.h"
@@ -473,6 +473,7 @@ void
 got_ethernet_packet(u_char *args, const struct pcap_pkthdr *header, const u_char *packet)
 {
 	static int count = 1;                   /* packet counter */
+	int ret = 0;
 	struct policy_list * pEnum = policy_list_head;	/* policy list */
 	struct header_info inf;				/* The Information */
 
@@ -521,7 +522,7 @@ got_ethernet_packet(u_char *args, const struct pcap_pkthdr *header, const u_char
 		if(ethernet_type != pEnum->ether_type)
 			check_sign = 0;
 		if(check_sign != 0)
-			got_ip_package(args,header,packet,&inf,pEnum);
+			ret = got_ip_package(args,header,packet,&inf,pEnum);		//Go on next checking step
 
 		pEnum = pEnum->pNext;
 	}

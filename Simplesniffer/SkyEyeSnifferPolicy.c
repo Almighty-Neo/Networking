@@ -35,7 +35,6 @@ void define_mark()
     mark_count = 1;
 
 	policy_test();
-    printf("Test Information Add Finished");
 }
 
 /*
@@ -410,6 +409,22 @@ int policy_check_keywords(const u_char * strPackage, int length, struct policy_l
 		
 	}
 	return 0;
+}
+
+int policy_check_fingerprint(const u_char *payload, int len, struct policy_list * plc)
+{
+    int i = 0;
+    int n = 0;
+
+    for (n = 0; n < plc->mark_array_count; n++){
+        if(plc->mark_position[n] >= len ||
+            *(payload + plc->mark_position[n]) != plc->mark_array[n])
+            break;
+    }
+            if(n == plc->mark_array_count)
+        return i;
+
+    return -1;
 }
 
 /* ----------------------------------------- */
