@@ -2,7 +2,6 @@
 #include "SkyEyeSnifferPolicy.h"
 
 unsigned long ip_add = 0;
-extern struct policy_list;
 
 u_char targetip[16] = {0};			//target ip adress, which you want to listen
 u_char keywords[MAXKEYWORDS][32] = {{0}};//keyword array which turned from keyword string
@@ -383,10 +382,10 @@ int policy_transfer_keyword(const u_char * strKeyword, int lenth, struct policy_
 
 int policy_transfer_fingerprint(const u_char * strKeyword, struct policy_list * plc)
 {
-
+	//Transfer string to fingerprint
 }
 
-int policy_check_keywords(const u_char * strPackage, int length, struct policy_list * plc)
+int policy_check_keywords(const u_char * strPackage, int length, const struct policy_list * plc)
 {
 	int i = 0;
 	int pointer_offset = 0;
@@ -411,7 +410,7 @@ int policy_check_keywords(const u_char * strPackage, int length, struct policy_l
 	return 0;
 }
 
-int policy_check_fingerprint(const u_char *payload, int len, struct policy_list * plc)
+int policy_check_fingerprint(const u_char *payload, int len, const struct policy_list * plc)
 {
     int i = 0;
     int n = 0;

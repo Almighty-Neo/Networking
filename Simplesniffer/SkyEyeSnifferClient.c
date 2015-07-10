@@ -5,8 +5,6 @@
 
 /*function implement start*/
 
-extern struct policy_list;
-
 extern struct policy_list * policy_list_head;
 extern struct policy_list * policy_list_tail;
 

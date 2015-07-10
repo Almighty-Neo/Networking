@@ -70,9 +70,9 @@ int policy_del(struct policy_list * des);
 
 int policy_clear();
 
-int policy_check_fingerprint(const u_char *payload, int len, struct policy_list * plc);
+int policy_check_fingerprint(const u_char *payload, int len, const struct policy_list * plc);
 
-int policy_check_keywords(const u_char * strPackage, int length, struct policy_list * plc);
+int policy_check_keywords(const u_char * strPackage, int length, const struct policy_list * plc);
 
 int policy_transfer_fingerprint(const u_char * strKeyword, struct policy_list * plc);
 
